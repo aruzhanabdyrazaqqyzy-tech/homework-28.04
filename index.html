@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightcoral;
+        border-radius: 10px;
+        width: 500px;
+        padding: 20px;
+    }
+    .search{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .task{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+
+</style>
+<body>
+    <div class="box">
+        <div class="search">
+            <input placeholder="create task" style="border: none; width: 200px; padding: 10px; border-radius: 10px;">
+            <button><img src="icon_plus.png" alt="icon_plus" width="20px"></button>
+        </div>
+         <div class="tasks">
+            <ul class="l"></ul>
+         </div>
+    </div>
+    <script>
+        const box = document.querySelector(".box");
+        const btn = document.querySelector("button")
+        const input = document.querySelector("input")
+
+        btn.addEventListener("click", function (){
+            if (!input.value.trim()) return;
+
+            const newTask = document.createElement("div");
+            newTask.classList.add("task");
+
+            newTask.innerHTML= `
+            <span> ${input.value}</span> 
+            <button class="remove">x</button>`;
+
+            box.appendChild(newTask);
+            input.value = "";
+
+            newTask.querySelector(".remove").addEventListener("click", function(){
+                newTask.remove();
+            });
+
+        });
+
+
+    </script>
+   
+    
+
+</body>
+</html>
